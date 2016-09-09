@@ -1,0 +1,9 @@
+{
+  "title":  "The minimum",
+  "pages":  [
+    {
+      "title":    "Home",
+      "content":  "This website and JSON object describe the absolute minimum site"
+    }
+  ]
+}

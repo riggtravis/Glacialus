@@ -1,0 +1,20 @@
+{
+  "title":    "My Page",
+  "favicon":  "",
+  "pages":    [
+    {
+      "title":    "Home",
+      "content":  "I'm a programmer. I work on things."
+    }
+  ],
+  "contact":  {
+    "email": "rigg.travis@gmail.com"
+  },
+  "social_media_links": {
+    "facebook":   "",
+    "github":     "",
+    "twitter":    "",
+    "instagram":  "",
+    "pinterest":  ""
+  }
+}

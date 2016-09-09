@@ -1,0 +1,22 @@
+{
+  "slogan":   "Titles? We don't need titles where we're going",
+  "logo":     "",
+  "favicon":  "",
+  "pages":    [],
+  "contact":  {
+    "mailing_address": {
+      "address":  "2003 Whittaker Hollow Road",
+      "town":     "Blacksburg",
+      "zip":      "24060-1080"
+    },
+    "phone": "+1-540-267-5874",
+    "email": "rigg.travis@gmail.com"
+  },
+  "social_media_links": {
+    "facebook":   "",
+    "github":     "",
+    "twitter":    "",
+    "instagram":  "",
+    "pinterest":  ""
+  }
+}
