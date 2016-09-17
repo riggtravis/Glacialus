@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<!-- In order to insert a favicon, head tags must be used. -->
+<head id="head">
+  <!-- JavaScript that runs onload goes here -->
+  <script src="glacialus.js"></script>
+
+  <script
+    src="https://code.jquery.com/jquery-3.1.0.slim.min.js"
+    integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8="
+    crossorigin="anonymous">
+  </script>
+
+  <script src=
+    "https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js">
+  </script>
+
+  <!-- The title should contain the title defined by the JSON -->
+  <title></title>
+
+  <!-- Pages should look stylish -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/min/1.5/min.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/css-social-buttons/1.2.0/css/zocial.min.css" />
+</head>
+
+<!--
+  The body tags are required for Internet Explorer to display things correctly
+-->
+<body id="body">
+  <!-- The header is where major website information goes -->
+  <header>
+    <!--
+      I have chosen to include all of this top matter because the site title is
+      a required element. It's actually rather difficult to think of a way to
+      include the other components in this header while forcing the title to
+      display in a readable fashion.
+    -->
+    <!-- The logo should go to the left of the site title and slogan -->
+    <div class="row">
+      <div id="logo" class="col c3">
+        <!--
+          Because html needs to be injected into a set of tags, we'll need to
+          create our image tag using a template of some kind and put it into a
+          div tag
+        -->
+      </div>
+      <div class="col c9">
+        <!-- The header should contain the name of the website -->
+        <h1 id="site_title"></h1>
+
+        <!-- The slogan should go underneath the site title -->
+        <em id="slogan"></em>
+      </div>
+    </div>
+  </header>
+
+  <!-- The nav is where the links to internal pages go -->
+  <nav class="nav" tabindex="-1" onclick="this.focus()">
+    <div class="container" id="nav_bar">
+
+    </div>
+  </nav>
+
+  <!-- The footer is where the minor website information goes -->
+  <footer id="footer">
+    <div id="social_media_links">
+
+    </div>
+    <div id="contact">
+
+    </div>
+  </footer>
+
+  <!-- JavaScript that doesn't run onload goes here -->
+</body>

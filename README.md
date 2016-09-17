@@ -1,2 +1,2 @@
 # Glacialus
-Web Generator for Non Webby People
+A Web Generator for Non Webby People

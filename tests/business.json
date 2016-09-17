@@ -34,7 +34,7 @@
       "address_line_one":       "101 Chestnut Street",
       "address_line_two":       "CPO 1353",
       "city":                   "Berea",
-      "state/province":         "Kentucky",
+      "state_province":         "Kentucky",
       "postal_code":            "40404",
       "postal_code_extension":  "1080",
       "country":                "United States"
@@ -44,9 +44,13 @@
   },
   "social_media_links": {
     "facebook":   "",
-    "github":     "",
     "twitter":    "",
-    "instagram":  "",
-    "pinterest":  ""
+    "linkedin":   "",
+    "github":     "",
+    "soundcloud": "",
+    "tumblr":     "",
+    "pinterest":  "",
+    "blogger":    "",
+    "500px":      ""
   }
 }
