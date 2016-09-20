@@ -7,19 +7,21 @@
     <strong>Phone:</strong> {{phone}} <br />
   {{/phone}}
 
-  {{#mailing_address}}
-    {{address_line_one}} <br />
-    {{#address_line_two}}
-      {{address_line_two}} <br />
-    {{/address_line_two}}
-    {{city}}
-    {{#state_province}}
-      , {{state_province}}
-    {{/state_province}}
-    {{postal_code}}
-    {{#postal_code_extension}}
-      {{postal_code_extension}}
-    {{/postal_code_extension}} <br />
-    {{country}}
-  {{/mailing_address}}
+  {{#mailing_address_valid}}
+    {{#mailing_address}}
+      {{address_line_one}} <br />
+      {{#address_line_two}}
+        {{address_line_two}} <br />
+      {{/address_line_two}}
+      {{city}}
+      {{#state_province}}
+        , {{state_province}}
+      {{/state_province}}
+      {{postal_code}}
+      {{#postal_code_extension}}
+        {{postal_code_extension}}
+      {{/postal_code_extension}} <br />
+      {{country}}
+    {{/mailing_address}}
+  {{/mailing_address_valid}}
 </address>
