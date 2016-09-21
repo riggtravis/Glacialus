@@ -81,8 +81,6 @@ document.getElementById("body").addEventListener("load", function () {
         // Load the Home page
         // Fetch the home page from the list of pages
         load_page(site.pages, "Home");
-
-        // TODO: Populate the navigation bar
       });
     }
   });
@@ -127,5 +125,12 @@ function load_page(pages, page_name) {
   check_for_page(pages, page_name, function (page) {
     document.getElementById("page_title").innerhtml = page.title;
     document.getElementById("content").innerhtml    = page.content;
+
+    // TODO: Populate the navigation bar
+    for (var index = 0; index < pages.length; index++) {
+      // Create a set of links, one for each page
+      // Feature the current page
+      // Create event listeners for all the pages that aren't the current page
+    }
   });
 }
