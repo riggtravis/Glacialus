@@ -13,7 +13,7 @@ document.getElementById("body").addEventListener("load", function () {
           typeof site.pages === 'object'  ) {
 
       // Check for the home page
-      check_for_page(site.pages, "Home", function () {
+      search_for_page(site.pages, "Home", function () {
         // Load site information
         // We know the site has a title, so go ahead and load that
         document.getElementById("site_title").innerhtml = site.title;
@@ -90,7 +90,7 @@ document.getElementById("body").addEventListener("load", function () {
 
 // Create a function that searches a list for a page and then performs an
   // action on that page
-function check_for_page (pages, name, callback) {
+function search_for_page (pages, name, callback) {
   "use strict";
 
   for (var index = 0; index < pages.length; index++) {
