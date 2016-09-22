@@ -31,19 +31,12 @@ document.getElementById("body").addEventListener("load", function () {
         if (site.social_media_links) {
           // load the social media links into a mustache template
           // Fetch the mustache template first
-          $.ajax({
-            url: 'templates/social_media_links.mustache',
-            type: 'get',
-
-            // Find a way to test if this is breaking.
-            async: TEMPLATE_ASYNC_ACTION,
-            success: function (template) {
+          get_template('social_media_links', function (template) {
               insert_html(
                 template,
                 site.social_media_links,
                 "social_media_links"
               );
-            }
           });
         }
 
@@ -53,19 +46,14 @@ document.getElementById("body").addEventListener("load", function () {
           if (  typeof site.contact.phone === "string"  &&
                 typeof site.contact.email === "string"  ) {
             // Start loading everything into the template.
-            $.ajax({
-              url: 'templates/contact.mustache',
-              type: 'get',
-              async: TEMPLATE_ASYNC_ACTION,
-              success: function (template) {
-                // Find out whether or not to bother with the mailing address.
-                site.contact.mailing_address_valid =
-                  site.contact.mailing_address.address_line_one &&
-                  site.contact.mailing_address.city             &&
-                  site.contact.mailing_address.postal_code      &&
-                  site.contact.mailing_address.country;
-                insert_html(template, site.contact, "contact");
-              }
+            get_template('contact', function (template) {
+              // Find out whether or not to bother with the mailing address.
+              site.contact.mailing_address_valid =
+                site.contact.mailing_address.address_line_one &&
+                site.contact.mailing_address.city             &&
+                site.contact.mailing_address.postal_code      &&
+                site.contact.mailing_address.country;
+              insert_html(template, site.contact, "contact");
             });
           }
         }
@@ -123,14 +111,41 @@ function load_page(pages, page_name) {
   "use strict";
 
   check_for_page(pages, page_name, function (page) {
-    document.getElementById("page_title").innerhtml = page.title;
-    document.getElementById("content").innerhtml    = page.content;
+    get_template('page', function (template) {
+      insert_html(template, page, "content_body");
+    });
 
     // TODO: Populate the navigation bar
+    // Create a container variable that will hold the navigation bar
+    var nav_string = "";
+
+    // Create a variable to contain the pagename tag
+    var page_name_tag = '<a class="pagename current" href="#">';
+
+    // Populate the nav_string with html to describe the nav bar
     for (var index = 0; index < pages.length; index++) {
       // Create a set of links, one for each page
       // Feature the current page
-      // Create event listeners for all the pages that aren't the current page
+      if (pages[index].title === page.title) {
+        // Always put the pagename at the start of the nav bar
+        nav_string = page_name_tag + page.title + '</a>' + nav_string;
+      }
+      else {
+        nav_string = nav_string + '<a href="#">' + pages[index].title + '</a>';
+      }
     }
+    // Create event listeners for all the pages that aren't the current page
+    // TODO: Think about how to assign identifiers to elements
+  });
+}
+
+function get_template (template_name, callback) {
+  "use strict";
+
+  $.ajax({
+    url: 'templates/' + template_name + '.mustache',
+    type: 'get',
+    async: true,
+    success: callback(template)
   });
 }
