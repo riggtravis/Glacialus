@@ -1,46 +1,57 @@
-test_results = {
-  good: 0,
-  bad: 0
-};
+QUnit.test("page searching", function (assert) {
+  'use strict';
 
-search_for_page([{
+  var pages = [{
     "title": "Home",
-    "content": "the content"
-  }], "Home", function (page) {
-    'use strict';
-
-    if (page.title === "Home" && page.conent === "the content") {
-      test_results.good++;
-    }
-    else {
-      test_results.bad++;
-    }
+    "content": "page content"
+  }];
+  search_for_page(pages, "Home", function (page) {
+    assert.deepEqual(
+      page,
+      {
+        "title": "Home",
+        "content": "page content"
+      },
+      "Searching for a page by title should return a matching page"
+    );
+  });
 });
 
-create_nav_object({
-    "title": "Featured",
+QUnit.test("nav object creation", function (assert) {
+  'use strict';
+
+  var page = {
+    "title": "Home",
     "content": "page content"
-  },
-  [
+  };
+
+  var pages = [
     {
-      "title": "featured",
+      "title": "Home",
       "content": "page content"
     },
     {
-      "title": "link_page",
-      "content": "different content"
+      "title": "Another_page",
+      "content": "it also has content"
     }
-  ], function (nav_object) {
-    'use strict';
+  ];
 
-    var expected_feature_element_info = 'class="pagename current" href="#"';
-    if (  nav_object.feature.title          === "Featured"                    &&
-          nav_object.feature.element_info   === expected_feature_element_info &&
-          nav_object.links[0].title         === "link_page"                   &&
-          nav_object.links[0].element_info  === 'href="#" id="nav_link0"') {
-      test_results.good++;
-    }
-    else {
-      test_results.bad++;
-    }
+  create_nav_object(page, pages, function (nav_object) {
+    asser.deepEqual(
+      nav_object,
+      {
+        feature: {
+          "title": "Home",
+          element_info: 'class="pagename current" href="#"'
+        },
+        links: [
+          {
+            "title": "Another_page",
+            element_info: 'href="#" id="nav_link0"'
+          }
+        ]
+      },
+      "The nav object should be a featured page and a list of links"
+    );
+  });
 });
