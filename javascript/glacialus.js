@@ -81,7 +81,7 @@ function search_for_page (pages, name, callback) {
   'use strict';
 
   for (var index = 0; index < pages.length; index++) {
-    if (pages[index].title === name){
+    if (pages[index].title === name) {
       callback(pages[index]);
     }
   }
@@ -115,7 +115,7 @@ function load_page(pages, page_name) {
     get_template_insert_html('page', page, "content_body");
 
     // TODO: Populate the navigation bar
-    create_nav_object(page, function (nav_object) {
+    create_nav_object(page, pages, function (nav_object) {
       get_template('nav_bar', function (template) {
         insert_html("nav_bar", nav_object, "nav_bar");
       });
@@ -152,7 +152,7 @@ function get_template_insert_html (template_name, object, destination) {
   });
 }
 
-function create_nav_object (page, callback) {
+function create_nav_object (page, pages, callback) {
   'use strict';
 
   // Create a container variable that will hold the navigation bar
@@ -179,7 +179,7 @@ function create_nav_object (page, callback) {
       element_id = "nav_link" + link_counter;
       link_counter++;
 
-      page_element_info = 'href="#" id=' + element_id;
+      page_element_info = 'href="#" id="' + element_id + '"';
       nav_links.push({
         title: pages[index].title,
         element_info: page_element_info
