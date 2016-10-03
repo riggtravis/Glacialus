@@ -40,11 +40,9 @@ function load_page(pages, page_name) {
   check_for_page(pages, page_name, function (page) {
     get_template_insert_html('page', page, "content_body");
 
-    // TODO: Populate the navigation bar
+    // Populate the navigation bar
     create_nav_object(page, pages, function (nav_object) {
-      get_template('nav_bar', function (template) {
-        insert_html("nav_bar", nav_object, "nav_bar");
-      });
+      get_template_insert_html('nav_bar', nav_object, "nav_bar");
 
       // Create event listeners for all the pages that aren't the current page
       var element_id;

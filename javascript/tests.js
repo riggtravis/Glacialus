@@ -76,3 +76,47 @@ QUnit.test("html insertion", function (assert) {
   // Tear down
   document.getElementById("bod").innerhtml = "";
 });
+
+// Test the append_to_element function
+QUnit.test("appending html", function (assert) {
+  'use strict';
+
+  // Set up
+  document.getElementById("bod").innerhtml = "Existing text";
+
+  // Run test
+  append_to_element(". New text", "bod");
+  assert.equal(
+      document.getElementById("bod").innerhtml,
+      "Existing text. New text",
+      "appending text to an element should result in old text then new text"
+  );
+
+  // Tear down
+  document.getElementById("bod").innerhtml = "";
+});
+
+// Test loading a page
+QUnit.test("loading pages", function (assert) {
+  'use strict';
+
+  // Set up
+  // There needs to be a list of pages
+  pages = [
+    { title: "Home", content: "content" },
+    { title: "otherpage", content:"different content" }
+  ];
+
+  // The body needs a place for content to go
+  // The body also needs a place for a navigation bar to go
+  insert_string = '<div id="content_body"></div><div id="nav_bar"></div>';
+  document.getElementById("bod").innerhtml = insert_string;
+
+  // Run test
+  load_page(pages, "Home");
+  // TODO:  assert that the innerhtml is what is expected
+  //        figure out how to assert that even listeners are correct
+
+  // Tear down
+  document.getElementById("bod").innerhtml = "";
+});
