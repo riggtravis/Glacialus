@@ -115,8 +115,104 @@ QUnit.test("loading pages", function (assert) {
   // Run test
   load_page(pages, "Home");
   // TODO:  assert that the innerhtml is what is expected
-  //        figure out how to assert that even listeners are correct
+  //        figure out how to assert that event listeners are correct
+  assert.equal(
+      document.getElementById("content_body").innerhtml,
+      "content",
+      "the content of the page should be that which is provided by the object"
+  );
+
+  // Assert that the navigation bar is what is expected.
+  // Figure out how exactly the template will render our html
+  assert.equal(
+      document.getElementById("nav_bar").innerhtml,
+      '  <a class="pagename current" href="#">Home</a>\
+\
+  <a href="#" id="nav_link0">otherpage</a>',
+      "The navigation bar should contain a featured page and links."
+  );
 
   // Tear down
   document.getElementById("bod").innerhtml = "";
+});
+
+// Test fetching a template
+QUnit.test("template fetching", function (assert) {
+  'use strict';
+
+  // run test
+  get_template("test.mustache", function (template) {
+    assert.equal(template, "{{check}}", "templates should be seen as strings");
+  });
+});
+
+// Test fetching a template and inserting html
+QUnit.test("template fetching and html insertion", function (assert) {
+  'use strict';
+
+  // Set up
+  get_template_insert_html("test.mustache", {check: "check"}, "bod");
+
+  // run test
+  assert.equal(
+      document.getElementById("bod").innerhtml,
+      "check",
+      "given a template name, an object, an element, html should be inserted"
+  );
+
+  // tear down
+  document.getElementById("bod").innerhtml = "";
+})
+
+// Test navigation bar description object generation
+QUnit.test("nav object generation", function (assert) {
+  'use strict';
+
+  // Set up
+  var pages = [
+    { title: "Home",      content: "content" },
+    { title: "otherpage", content: "other content" }
+  ];
+
+  var page = { title: "Home", content: "content" }
+
+  var expected_object = {
+    feature: {
+      title: "Home",
+      element_info: 'class="pagename current" href="#"'
+    },
+    links: [ { title: "otherpage", element_info: 'href="#" id="nav_link0"' } ]
+  }
+
+  // Run test
+  create_nav_object(page, pages, function (object) { 
+    assert.deepEqual(
+        object,
+        expected_object,
+        "We need usable navigation description objects to be generated"
+    );
+  });
+};
+
+// Test the start function
+QUnit.test("the whole thing, pretty much", function (assert) {
+  // Set up
+  document.getElementById("bod").innerhtml = '<div id="site_title"></div>\
+<div id="slogan"></div>\
+<div id="logo"></div>\
+<div id="social_media_links"></div>\
+<div id="contact"</div>\
+<div id="head"></div>\
+<div id="content_body"></div>\
+<div id="nav_bar"></div>';
+
+  // Run test
+  start();
+  assert.equal(document.getElementById("bod").innerhtml,
+'<div id="site_title">GD Coffee</div>\
+<div id="logo"></div>',
+      "Given a JSON file, a website should get made."
+  );
+
+  // Tear down
 });

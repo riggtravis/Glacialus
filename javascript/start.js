@@ -1,9 +1,11 @@
 // Create a function that loads the basic site information.
-document.getElementById("body").addEventListener("load", function () {
+document.getElementById("body").addEventListener("load", start);
+
+function start () {
   'use strict';
 
   // Get the JSON file that describes the website.
-  $.getJSON("site.json", function(site) {
+  $.getJSON("site.json", function (site) {
     // Make sure the JSON is valid
     // the title needs to be a string and it must contain something
     if (  typeof site.title === 'string'  &&
@@ -29,13 +31,11 @@ document.getElementById("body").addEventListener("load", function () {
         if (site.social_media_links) {
           // load the social media links into a mustache template
           // Fetch the mustache template first
-          get_template('social_media_links', function (template) {
-              insert_html(
-                template,
-                site.social_media_links,
-                "social_media_links"
-              );
-          });
+          get_template_insert_html(
+              'social_media_links',
+              site.social_media_links,
+              "social_media_links"
+          );
         }
 
         // Load contact information
@@ -70,4 +70,4 @@ document.getElementById("body").addEventListener("load", function () {
       });
     }
   });
-});
+}

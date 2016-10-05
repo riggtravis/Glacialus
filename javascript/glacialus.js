@@ -89,7 +89,7 @@ function create_nav_object (page, pages, callback) {
   // the navigation links should be counted independently
   var link_counter = 0;
 
-  // Populate the nav_string with html to describe the nav bar
+  // Populate nav_links the with html to describe the nav bar
   for (var index = 0; index < pages.length; index++) {
     // Create a set of links, one for each page
     // Feature the current page
