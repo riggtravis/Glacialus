@@ -201,7 +201,7 @@ QUnit.test("the whole thing, pretty much", function (assert) {
 <div id="slogan"></div>\
 <div id="logo"></div>\
 <div id="social_media_links"></div>\
-<div id="contact"</div>\
+<div id="contact"></div>\
 <div id="head"></div>\
 <div id="content_body"></div>\
 <div id="nav_bar"></div>';
@@ -210,7 +210,60 @@ QUnit.test("the whole thing, pretty much", function (assert) {
   start();
   assert.equal(document.getElementById("bod").innerhtml,
 '<div id="site_title">GD Coffee</div>\
-<div id="logo"></div>',
+<div id="logo"><img src="test.png" alt="logo" height="58" width="58" /></div>\
+<div id="social_media_links"><nav>\
+    <a\
+      class="zocial facebook icon"\
+      href="https://www.facebook.com/test"\
+    >\
+      Visit on Facebook!\
+    </a>\
+\
+    <a class="zocial twitter icon" href="https://www.twitter.com/test">\
+      Follow on Twitter!\
+    </a>\
+\
+    <a\
+      class="zocial linkedin icon"\
+      href="https://www.linkedin.com/in/test"\
+    >\
+      Look at LinkedIn!\
+    </a>\
+\
+    <a class="zocial github icon" href="https://www.github.com/test">\
+      There\'s code on GitHub!\
+    </a>\
+\
+    <a\
+      class="zocial soundcloud icon"\
+      href="https://www.soundcloud.com/test"\
+    >\
+      There\'s sounds on SoundCloud!\
+    </a>\
+\
+    <a class="zocial tumblr icon" href="https://test.tumblr.com">\
+      Follow on Tumblr!\
+    </a>\
+\
+    <a\
+      class="zocial pinterest icon"\
+      href="https://www.pinterest.com/test"\
+    >\
+      Look at pictures on Pinterest!\
+    </a>\
+\
+    <a class="zocial blogger icon" href="https://test.blogspot.com">\
+      Words!\
+    </a>\
+\
+    <a\
+      class="zocial fivehundredpx icon"\
+      href="https://500px.com/test"\
+    >\
+      Professionally done pictures!\
+    </a>\
+</nav></div>\
+<div id="contact">',
       "Given a JSON file, a website should get made."
   );
 

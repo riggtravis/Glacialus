@@ -1,7 +1,7 @@
 {
   "title":    "GD Coffee",
   "slogan":   "Like Starbucks, but nothing like Starbucks",
-  "logo":     "",
+  "logo":     "test.png",
   "favicon":  "",
   "pages": [
     {
@@ -43,14 +43,14 @@
     "email": "rigg.travis@gmail.com"
   },
   "social_media_links": {
-    "facebook":   "",
-    "twitter":    "",
-    "linkedin":   "",
-    "github":     "",
-    "soundcloud": "",
-    "tumblr":     "",
-    "pinterest":  "",
-    "blogger":    "",
-    "500px":      ""
+    "facebook":       "test",
+    "twitter":        "test",
+    "linkedin":       "test",
+    "github":         "test",
+    "soundcloud":     "test",
+    "tumblr":         "test",
+    "pinterest":      "test",
+    "blogger":        "test",
+    "fivehundredpx":  "test"
   }
 }
