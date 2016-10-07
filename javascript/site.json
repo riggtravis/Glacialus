@@ -2,7 +2,7 @@
   "title":    "GD Coffee",
   "slogan":   "Like Starbucks, but nothing like Starbucks",
   "logo":     "test.png",
-  "favicon":  "",
+  "favicon":  "testf.png",
   "pages": [
     {
       "title":    "Home",

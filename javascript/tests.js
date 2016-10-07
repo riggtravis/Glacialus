@@ -263,7 +263,22 @@ QUnit.test("the whole thing, pretty much", function (assert) {
       Professionally done pictures!\
     </a>\
 </nav></div>\
-<div id="contact">',
+<div id="contact"><address>\
+    <strong>Email:</strong> rigg,travis@gmail.com <br />\
+\
+    <strong>Phone:</strong> +1-540-267-5874 <br />\
+\
+      101 Chestnut Street <br />\
+        CPO 1353 <br />,\
+      Berea\
+        , Kentucky\
+      40404\
+        1080\
+      <br />\
+      United States\
+</address></div>\
+<div id="head"><link rel="icon" type=image/png href="testf.png"/></div>\
+<div id="content_body">',
       "Given a JSON file, a website should get made."
   );
 

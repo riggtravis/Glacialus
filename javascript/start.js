@@ -41,6 +41,8 @@ function start () {
         // Load contact information
         if (site.contact) {
           // We can rely on stringy phone and email information
+          // I'm not sure the way I originally designed this is good. What if
+          // someone has a phone number or an email, but not the other?
           if (  typeof site.contact.phone === "string"  &&
                 typeof site.contact.email === "string"  ) {
             // Start loading everything into the template.
