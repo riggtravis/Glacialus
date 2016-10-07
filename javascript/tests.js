@@ -278,9 +278,18 @@ QUnit.test("the whole thing, pretty much", function (assert) {
       United States\
 </address></div>\
 <div id="head"><link rel="icon" type=image/png href="testf.png"/></div>\
-<div id="content_body">',
+<div id="content_body"><h1>Home</h1>\
+Come to GD Coffee for the coffee. Leave because you have your coffee.</div>\
+<div id="nav_bar">  <a class="pagename current" href="#">Home</a>\
+\
+  <a href="#" id="nav_link0">About</a>\
+  <a href="#" id="nav_link1">Menu</a>\
+  <a href="#" id="nav_link2">Locations</a>\
+  <a href="#" id="nav_link3">Testimonials</a>\
+  <a href="#" id="nav_link4">FAQ</a></div>\',
       "Given a JSON file, a website should get made."
   );
 
   // Tear down
+  Document.getElementById("bod").innerhtml = "";
 });
