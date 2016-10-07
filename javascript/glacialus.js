@@ -16,7 +16,7 @@ function insert_html (template, object, element_name) {
   'use strict';
 
   var rendered_html = Mustache.render(template, object);
-  document.getElementById(element_name).innerhtml = rendered_html;
+  document.getElementById(element_name).innerHTML = rendered_html;
 }
 
 // Create a function that takes an string and an element name and appends the
@@ -25,13 +25,13 @@ function append_to_element(string, element_name) {
   'use strict';
 
   var element = document.getElementById(element_name);
-  var prepend = element.innerhtml;
-  element.innerhtml = prepend + string;
+  var prepend = element.innerHTML;
+  element.innerHTML = prepend + string;
 }
 
 // Create a function that receives some pages and a pagename and then loads that
   // particular page
-function load_page(pages, page_name) {
+function load_page(pages, page_name, callback) {
   'use strict';
 
   search_for_page(pages, page_name, function (page) {
@@ -39,19 +39,25 @@ function load_page(pages, page_name) {
 
     // Populate the navigation bar
     create_nav_object(page, pages, function (nav_object) {
-      get_template_insert_html('nav_bar', nav_object, "nav_bar");
-
-      // Create event listeners for all the pages that aren't the current page
-      var element_id;
-      for (var index = 0; index < nav_object.links.length; index++) {
-        element_id = "nav_link" + index.toString();
+      get_template('nav_bar', function (template) {
+        // Render the information using the template.
+        var rendered_html = Mustache.render(template, nav_object);
+        document.getElementById("nav_bar").innerHTML = rendered_html;
         
-        // Dynamically adding event listeners doesn't seem to be working.
-        document.getElementById(element_id).addEventListener(
-          "click",
-          load_page(pages, nav_object.links[index].title)
-        );
-      }
+        // Create event listeners
+        var element_id;
+        for (var index = 0; index < nav_object.links.length; index++) {
+          element_id = "nav_link" + index.toString();
+          
+          document.getElementById(element_id).addEventListener(
+            "click",
+            load_page(pages, nav_object.links[index].title)
+          );
+        }
+        
+        // The callback is optional
+        if (callback) callback();
+      });
     });
   });
 }
@@ -104,7 +110,7 @@ function create_nav_object (page, pages, callback) {
       };
     }
     else {
-      element_id = "nav_link" + link_counter;
+      element_id = "nav_link" + link_counter.toString();
       link_counter++;
 
       page_element_info = 'href="#" id="' + element_id + '"';

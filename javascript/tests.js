@@ -68,13 +68,13 @@ QUnit.test("html insertion", function (assert) {
   // Run test
   insert_html(template, object, "bod");
   assert.equal(
-      document.getElementById("bod").innerhtml,
+      document.getElementById("bod").innerHTML,
       "check",
       "html insertion should output expected results"
   );
 
   // Tear down
-  document.getElementById("bod").innerhtml = "";
+  document.getElementById("bod").innerHTML = "";
 });
 
 // Test the append_to_element function
@@ -82,18 +82,18 @@ QUnit.test("appending html", function (assert) {
   'use strict';
 
   // Set up
-  document.getElementById("bod").innerhtml = "Existing text";
+  document.getElementById("bod").innerHTML = "Existing text";
 
   // Run test
   append_to_element(". New text", "bod");
   assert.equal(
-      document.getElementById("bod").innerhtml,
+      document.getElementById("bod").innerHTML,
       "Existing text. New text",
       "appending text to an element should result in old text then new text"
   );
 
   // Tear down
-  document.getElementById("bod").innerhtml = "";
+  document.getElementById("bod").innerHTML = "";
 });
 
 // Test loading a page
@@ -110,30 +110,32 @@ QUnit.test("loading pages", function (assert) {
   // The body needs a place for content to go
   // The body also needs a place for a navigation bar to go
   var insert_string = '<div id="content_body"></div><div id="nav_bar"></div>';
-  document.getElementById("bod").innerhtml = insert_string;
+  document.getElementById("bod").innerHTML = insert_string;
 
   // Run test
-  load_page(pages, "Home");
-  // TODO:  assert that the innerhtml is what is expected
-  //        figure out how to assert that event listeners are correct
-  assert.equal(
-      document.getElementById("content_body").innerhtml,
-      "content",
-      "the content of the page should be that which is provided by the object"
-  );
+  // This function isn't running at all.
+  load_page(pages, "Home", function () {
+    assert.equal(
+        document.getElementById("content_body").innerHTML,
+        "content",
+        "the content of the page should be that which is provided by the object"
+    );
 
-  // Assert that the navigation bar is what is expected.
-  // Figure out how exactly the template will render our html
-  assert.equal(
-      document.getElementById("nav_bar").innerhtml,
-      '  <a class="pagename current" href="#">Home</a>\
+    // Assert that the navigation bar is what is expected.
+    // Figure out how exactly the template will render our html
+    assert.equal(
+        document.getElementById("nav_bar").innerHTML,
+        '  <a class="pagename current" href="#">Home</a>\
 \
   <a href="#" id="nav_link0">otherpage</a>',
-      "The navigation bar should contain a featured page and links."
-  );
+        "The navigation bar should contain a featured page and links."
+    );
+  });
+  // TODO:  assert that the innerHTML is what is expected
+  //        figure out how to assert that event listeners are correct
 
   // Tear down
-  document.getElementById("bod").innerhtml = "";
+  document.getElementById("bod").innerHTML = "";
 });
 
 // Test fetching a template
@@ -155,13 +157,13 @@ QUnit.test("template fetching and html insertion", function (assert) {
 
   // run test
   assert.equal(
-      document.getElementById("bod").innerhtml,
+      document.getElementById("bod").innerHTML,
       "check",
       "given a template name, an object, an element, html should be inserted"
   );
 
   // tear down
-  document.getElementById("bod").innerhtml = "";
+  document.getElementById("bod").innerHTML = "";
 })
 
 // Test navigation bar description object generation
@@ -197,7 +199,7 @@ QUnit.test("nav object generation", function (assert) {
 // Test the start function
 QUnit.test("the whole thing, pretty much", function (assert) {
   // Set up
-  document.getElementById("bod").innerhtml = '<div id="site_title"></div>\
+  document.getElementById("bod").innerHTML = '<div id="site_title"></div>\
 <div id="slogan"></div>\
 <div id="logo"></div>\
 <div id="social_media_links"></div>\
@@ -208,7 +210,7 @@ QUnit.test("the whole thing, pretty much", function (assert) {
 
   // Run test
   start();
-  assert.equal(document.getElementById("bod").innerhtml,
+  assert.equal(document.getElementById("bod").innerHTML,
 '<div id="site_title">GD Coffee</div>\
 <div id="logo"><img src="test.png" alt="logo" height="58" width="58" /></div>\
 <div id="social_media_links"><nav>\
@@ -291,5 +293,5 @@ Come to GD Coffee for the coffee. Leave because you have your coffee.</div>\
   );
 
   // Tear down
-  Document.getElementById("bod").innerhtml = "";
+  Document.getElementById("bod").innerHTML = "";
 });
