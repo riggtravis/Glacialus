@@ -54,7 +54,7 @@ function load_page(pages, page_name, callback) {
             load_page(pages, nav_object.links[index].title)
           );
         }
-        
+
         // The callback is optional
         if (callback) callback();
       });
@@ -65,8 +65,10 @@ function load_page(pages, page_name, callback) {
 function get_template (template_name, callback) {
   'use strict';
 
+  var url = 'templates/' + template_name + '.mustache';
+
   $.ajax({
-    url: 'templates/' + template_name + '.mustache',
+    url: url,
     type: 'get',
     async: true,
     success: function (template) {
