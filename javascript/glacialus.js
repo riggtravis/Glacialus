@@ -1,6 +1,3 @@
-// TODO: Create a test kit
-// TODO: Pull top level functionality out of load page
-
 // Create a function that searches a list for a page and then performs an
   // action on that page
 function search_for_page (pages, name, callback) {
@@ -37,7 +34,7 @@ function append_to_element(string, element_name) {
 function load_page(pages, page_name) {
   'use strict';
 
-  check_for_page(pages, page_name, function (page) {
+  search_for_page(pages, page_name, function (page) {
     get_template_insert_html('page', page, "content_body");
 
     // Populate the navigation bar
@@ -48,6 +45,8 @@ function load_page(pages, page_name) {
       var element_id;
       for (var index = 0; index < nav_object.links.length; index++) {
         element_id = "nav_link" + index.toString();
+        
+        // Dynamically adding event listeners doesn't seem to be working.
         document.getElementById(element_id).addEventListener(
           "click",
           load_page(pages, nav_object.links[index].title)
@@ -64,7 +63,10 @@ function get_template (template_name, callback) {
     url: 'templates/' + template_name + '.mustache',
     type: 'get',
     async: true,
-    success: callback(template)
+    success: function (template) {
+      'use strict';
+      callback(template);
+    }
   });
 }
 
@@ -85,9 +87,11 @@ function create_nav_object (page, pages, callback) {
 
   // Create a variable to contain the pagename tag
   var page_name_element_info = 'class="pagename current" href="#"';
+  var page_element_info;
 
   // the navigation links should be counted independently
   var link_counter = 0;
+  var element_id;
 
   // Populate nav_links the with html to describe the nav bar
   for (var index = 0; index < pages.length; index++) {

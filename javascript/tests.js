@@ -38,20 +38,20 @@ QUnit.test("nav object creation", function (assert) {
 
   create_nav_object(page, pages, function (nav_object) {
     assert.deepEqual(
-      nav_object,
-      {
-        feature: {
-          "title": "Home",
-          element_info: 'class="pagename current" href="#"'
+        nav_object,
+        {
+          feature: {
+            "title": "Home",
+            element_info: 'class="pagename current" href="#"'
+          },
+          links: [
+            {
+              "title": "Another_page",
+              element_info: 'href="#" id="nav_link0"'
+            }
+          ]
         },
-        links: [
-          {
-            "title": "Another_page",
-            element_info: 'href="#" id="nav_link0"'
-          }
-        ]
-      },
-      "The nav object should be a featured page and a list of links"
+        "The nav object should be a featured page and a list of links"
     );
   });
 });
@@ -102,14 +102,14 @@ QUnit.test("loading pages", function (assert) {
 
   // Set up
   // There needs to be a list of pages
-  pages = [
+   var pages = [
     { title: "Home", content: "content" },
     { title: "otherpage", content:"different content" }
   ];
 
   // The body needs a place for content to go
   // The body also needs a place for a navigation bar to go
-  insert_string = '<div id="content_body"></div><div id="nav_bar"></div>';
+  var insert_string = '<div id="content_body"></div><div id="nav_bar"></div>';
   document.getElementById("bod").innerhtml = insert_string;
 
   // Run test
@@ -192,7 +192,7 @@ QUnit.test("nav object generation", function (assert) {
         "We need usable navigation description objects to be generated"
     );
   });
-};
+});
 
 // Test the start function
 QUnit.test("the whole thing, pretty much", function (assert) {
@@ -286,7 +286,7 @@ Come to GD Coffee for the coffee. Leave because you have your coffee.</div>\
   <a href="#" id="nav_link1">Menu</a>\
   <a href="#" id="nav_link2">Locations</a>\
   <a href="#" id="nav_link3">Testimonials</a>\
-  <a href="#" id="nav_link4">FAQ</a></div>\',
+  <a href="#" id="nav_link4">FAQ</a></div>',
       "Given a JSON file, a website should get made."
   );
 
