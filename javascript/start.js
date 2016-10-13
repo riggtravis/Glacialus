@@ -1,7 +1,7 @@
 // Create a function that loads the basic site information.
 document.getElementById("body").addEventListener("load", start);
 
-function start () {
+function start (callback) {
   'use strict';
 
   // Get the JSON file that describes the website.
@@ -68,7 +68,7 @@ function start () {
 
         // Load the Home page
         // Fetch the home page from the list of pages
-        load_page(site.pages, "Home");
+        load_page(site.pages, "Home", callback);
       });
     }
   });

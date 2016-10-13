@@ -71,6 +71,7 @@ function get_template (template_name, callback) {
     url: url,
     type: 'get',
     success: function (template) {
+      'use strict';
       callback(template);
     }
   });
