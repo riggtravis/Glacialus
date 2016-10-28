@@ -42,6 +42,7 @@ function load_page(pages, page_name, callback) {
       get_template('nav_bar', function (template) {
         // Render the information using the template.
         var rendered_html = Mustache.render(template, nav_object);
+        console.log(rendered_html);
         document.getElementById("nav_bar").innerHTML = rendered_html;
         
         // Create event listeners
@@ -49,6 +50,7 @@ function load_page(pages, page_name, callback) {
         for (var index = 0; index < nav_object.links.length; index++) {
           element_id = "nav_link" + index.toString();
           
+          console.log(element_id);
           document.getElementById(element_id).addEventListener(
             "click",
             load_page(pages, nav_object.links[index].title)
@@ -66,11 +68,13 @@ function get_template (template_name, callback) {
   'use strict';
 
   var url = 'templates/' + template_name + '.mustache';
+  console.log(url);
 
   $.ajax({
     url: url,
     type: 'get',
     success: function (template) {
+      console.log("Template callback: ok");
       callback(template);
     }
   });
