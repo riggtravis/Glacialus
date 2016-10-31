@@ -1,7 +1,13 @@
 // Create a function that loads the basic site information.
-document.getElementById("body").addEventListener("load", start);
+document.getElementById('body').addEventListener("load", function () {
+  'use strict';
 
-function start (callback) {
+  start_glacialus(function () {
+    console.log(document);
+  })
+});
+
+function start_glacialus (callback) {
   'use strict';
 
   // Get the JSON file that describes the website.
