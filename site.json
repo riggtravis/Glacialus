@@ -1,0 +1,56 @@
+{
+  "title":    "GD Coffee",
+  "slogan":   "Like Starbucks, but nothing like Starbucks",
+  "logo":     "",
+  "favicon":  "",
+  "pages": [
+    {
+      "title":    "Home",
+      "content":  "Come to GD Coffee for the coffee. Leave because you have your coffee."
+    },
+    {
+      "title":    "About",
+      "content":  "GD Coffee was founded in 2016 when Travis Rigg got annoyed at how much work went into ordering a small black coffee. He had to say 'I want a small black coffe.' What a pain. It would be so much easier if there was a coffee house that only had one item: a cup of coffee. GD Coffee seeks to offer that solution. Walk up to the counter, say a number, hand over twice as many dollars as that number, receive that number of cups of coffee.'"
+    },
+    {
+      "title":    "Menu",
+      "content":  "Coffee, $2"
+    },
+    {
+      "title":    "Locations",
+      "content":  "Currently GD Coffee is closed because Travis Rigg yelled at a customer for asking for creamer."
+    },
+    {
+      "title":    "Testimonials",
+      "content":  "Jack Kemps of Lewisberg said... 'I asked for creamer and the owner yelled at me.'"
+    },
+    {
+      "title":    "FAQ",
+      "content":  "**Q**: Can I have some creamer? \n**A**: NO!"
+    }
+  ],
+  "contact": {
+    "mailing_address": {
+      "address_line_one":       "101 Chestnut Street",
+      "address_line_two":       "CPO 1353",
+      "city":                   "Berea",
+      "state_province":         "Kentucky",
+      "postal_code":            "40404",
+      "postal_code_extension":  "1080",
+      "country":                "United States"
+    },
+    "phone": "+1-540-267-5874",
+    "email": "rigg.travis@gmail.com"
+  },
+  "social_media_links": {
+    "facebook":   "",
+    "twitter":    "",
+    "linkedin":   "",
+    "github":     "",
+    "soundcloud": "",
+    "tumblr":     "",
+    "pinterest":  "",
+    "blogger":    "",
+    "500px":      ""
+  }
+}
