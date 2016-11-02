@@ -2,9 +2,8 @@
 document.getElementById('body').addEventListener("load", function () {
   'use strict';
 
-  start_glacialus(function () {
-    console.log(document);
-  })
+  alert("IT'S HAPPENING");
+  start_glacialus();
 });
 
 function start_glacialus (callback) {
