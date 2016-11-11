@@ -6,7 +6,9 @@
   <title id="site_title"></title>
 
   <!-- Pages should look stylish -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/min/1.5/min.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/blaze" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/css-social-buttons/1.2.0/css/zocial.min.css" />
 </head>
 
@@ -42,15 +44,11 @@
   </header>
 
   <!-- The nav is where the links to internal pages go -->
-  <nav class="nav" tabindex="-1" onclick="this.focus()">
-    <div class="container" id="nav_bar">
-
-    </div>
-  </nav>
-  <button class="btn-close btn btn-sm">x</button>
+  <ul class="c-nav c-nav--inline" id="nav">
+  </ul>
 
   <!-- Content_body is where the content of the page goes -->
-  <div id="content_body">
+  <div id="content_body" class="o-container o-container--large">
 
   </div>
 

@@ -6,6 +6,8 @@ document.getElementById('body').addEventListener("load", function () {
   start_glacialus();
 });
 
+start_glacialus();
+
 function start_glacialus (callback) {
   'use strict';
 
@@ -26,7 +28,7 @@ function start_glacialus (callback) {
         // Next load all the optional information.
         document.getElementById("slogan").innerhtml = site.slogan;
         document.getElementById("logo").innerhtml   =
-          '<img src="' + site.logo + '" alt="logo" height="58" width="58" />';
+          '<img src="' + site.logo + '" alt="logo" height="58" width="58" class="o-image" />';
 
         // These two ajax calls are extremely similar.
         // TODO: Create a function that gets a template and loads an object

@@ -103,7 +103,7 @@ function create_nav_object (page, pages, callback) {
   var current_page;
 
   // Create a variable to contain the pagename tag
-  var page_name_element_info = 'class="pagename current" href="#"';
+  var page_name_element_info = 'class="c-nav__item"';
   var page_element_info;
 
   // the navigation links should be counted independently
@@ -124,7 +124,7 @@ function create_nav_object (page, pages, callback) {
       element_id = "nav_link" + link_counter.toString();
       link_counter++;
 
-      page_element_info = 'href="#" id="' + element_id + '"';
+      page_element_info = 'class="c-nav__item id="' + element_id + '"';
       nav_links.push({
         title: pages[index].title,
         element_info: page_element_info
