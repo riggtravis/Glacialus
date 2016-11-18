@@ -42,18 +42,21 @@ function load_page(pages, page_name, callback) {
       get_template('nav_bar', function (template) {
         // Render the information using the template.
         var rendered_html = Mustache.render(template, nav_object);
-        console.log(rendered_html);
-        document.getElementById("nav_bar").innerHTML = rendered_html;
+        document.getElementById("nav").innerHTML = rendered_html;
         
         // Create event listeners
         var element_id;
+        var link;
         for (var index = 0; index < nav_object.links.length; index++) {
-          element_id = "nav_link" + index.toString();
+          element_id  = "nav_link" + index.toString();
+          link        = nav_object.links[index];
           
-          console.log(element_id);
           document.getElementById(element_id).addEventListener(
             "click",
-            load_page(pages, nav_object.links[index].title)
+            function () {
+              console.log(element_id);
+              load_page(pages, link.title);
+            }
           );
         }
 
@@ -124,7 +127,7 @@ function create_nav_object (page, pages, callback) {
       element_id = "nav_link" + link_counter.toString();
       link_counter++;
 
-      page_element_info = 'class="c-nav__item id="' + element_id + '"';
+      page_element_info = 'class="c-nav__item" id="' + element_id + '"';
       nav_links.push({
         title: pages[index].title,
         element_info: page_element_info
