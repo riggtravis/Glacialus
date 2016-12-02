@@ -51,7 +51,10 @@ function load_page(pages, page_name, callback) {
           element_id  = "nav_link" + index.toString();
           link        = nav_object.links[index];
           
-          document.getElementById(element_id).addEventListener("click", create_event_function(pages, link.title));
+          document.getElementById(element_id).addEventListener(
+            "click",
+            create_event_function(pages, link.title);
+          );
         }
 
         // The callback is optional
@@ -65,11 +68,13 @@ function get_template (template_name, callback) {
   'use strict';
 
   var url = 'templates/' + template_name + '.mustache';
+  console.log(url);
 
   $.ajax({
     url: url,
     type: 'get',
     success: function (template) {
+      console.log("Template callback: ok");
       callback(template);
     }
   });
